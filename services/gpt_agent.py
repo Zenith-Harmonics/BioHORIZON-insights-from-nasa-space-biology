@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from pydantic_ai import Agent
 from pydantic_ai.models.openai import OpenAIChatModel
 from pydantic_ai.providers.openai import OpenAIProvider
-from env import OPENAI_URL, LLM_MODEL
+from env import OPENAI_URL, LLM_MODEL, API_KEY
 from services.prompts import SYSTEM_PROMPT, INSTRUCTIONS
 
 
@@ -17,7 +17,7 @@ class Summarizer:
         print("LLM model: ", LLM_MODEL)
 
         self.client = AsyncOpenAI(
-            api_key="XXX", base_url=OPENAI_URL, default_headers=""
+            api_key=API_KEY, base_url=OPENAI_URL, default_headers=""
         )
         self.llm = OpenAIChatModel(
             model_name=LLM_MODEL, provider=OpenAIProvider(openai_client=self.client)
@@ -34,8 +34,8 @@ class Summarizer:
         )
 
     def summarize(self, input_paper: str) -> str:
-        summary = self.agent.run(input_paper)
-        return summary
+        summary = self.agent.run_sync(input_paper)
+        return summary.output.FINAL_RESPONSE
 
 
 
