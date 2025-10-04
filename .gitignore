@@ -9,3 +9,6 @@ services/services.pyproj
 .venv
 /venv
 /.idea
+
+.vscode
+env.py
