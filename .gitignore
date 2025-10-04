@@ -8,3 +8,4 @@ services/services.sln
 services/services.pyproj
 .venv
 /venv
+/.idea
