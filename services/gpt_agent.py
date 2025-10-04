@@ -13,11 +13,11 @@ class ResponseType(BaseModel):
 
 class Summarizer:
     def __init__(self):
-        print("PydanticAgentRerank using: " + OPENAI_URL)
+        print("Sumamarizer using: " + OPENAI_URL)
         print("LLM model: ", LLM_MODEL)
 
         self.client = AsyncOpenAI(
-            api_key=API_KEY, base_url=OPENAI_URL, default_headers=""
+            api_key=API_KEY, base_url=OPENAI_URL,
         )
         self.llm = OpenAIChatModel(
             model_name=LLM_MODEL, provider=OpenAIProvider(openai_client=self.client)
@@ -36,7 +36,4 @@ class Summarizer:
     def summarize(self, input_paper: str) -> str:
         summary = self.agent.run_sync(input_paper)
         return summary.output.FINAL_RESPONSE
-
-
-
 
