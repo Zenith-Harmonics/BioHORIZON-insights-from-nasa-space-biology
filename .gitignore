@@ -6,3 +6,5 @@ biohorizon_backend/biohorizon_backend.sln
 /services/.vs
 services/services.sln
 services/services.pyproj
+.venv
+/venv
