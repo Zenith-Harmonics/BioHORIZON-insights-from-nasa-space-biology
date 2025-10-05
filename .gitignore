@@ -12,3 +12,4 @@ services/services.pyproj
 
 .vscode
 env.py
+/services/__pycache__
