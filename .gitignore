@@ -1,5 +1,4 @@
 /BioHorizon/.vs/BioHorizon/CopilotIndices
-/BioHorizon
 /biohorizon_backend/.vs
 biohorizon_backend/biohorizon_backend.pyproj
 biohorizon_backend/biohorizon_backend.sln
@@ -16,3 +15,4 @@ env.py
 /BioHorizon/mainapp/__pycache__
 BioHorizon/mainapp/__pycache__/urls.cpython-313.pyc
 /BioHorizon/BioHorizon/__pycache__
+/BioHorizon/services/__pycache__
