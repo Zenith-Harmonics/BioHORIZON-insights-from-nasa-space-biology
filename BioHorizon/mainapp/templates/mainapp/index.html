@@ -1,7 +1,16 @@
 {% extends 'mainapp/base.html' %}
 
 {% block content %}
-<h1><b>Articles:</b></h1>
+<h1><b>Latest research papers:</b></h1> <br>
+<form method="get" action="{% url 'home' %}" class="input-group mb-3">
+  <div class="form-outline" data-mdb-input-init>
+    <input type="search" id="searchbar" name="q" class="form-control"
+           placeholder="Search" value="{{ q|default:'' }}" />
+  </div>
+  <button type="submit" id="searchbutton" class="btn btn-primary" data-mdb-ripple-init>
+    <i class="fas fa-search"></i>
+  </button>
+</form>
 
 <ul class="list-group">
     <div class="d-flex flex-wrap gap-3">

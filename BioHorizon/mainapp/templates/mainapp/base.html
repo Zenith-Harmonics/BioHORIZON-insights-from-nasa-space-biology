@@ -5,37 +5,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Space_Challenge</title>
+    <title>BioHorizon</title>
 
     <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/darkly/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 
 <body>
     <!-- Navbar -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Logo</a>
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="{% static 'pngs/Logo.JPG' %}" alt="Space Challenge logo" class="brand-logo me-2">
+                BioHorizon
+            </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
                 aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Home
-                            <span class="visually-hidden">(current)</span>
-                        </a>
-                    </li>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
                 </ul>
-                <div class="d-flex">
-                    <a class="navbar-brand" href="#">About</a>
-                </div>
             </div>
         </div>
     </nav>
+    <!-- End Navbar -->
+
+    <br>
 
     <div class="container">
 
@@ -43,6 +47,24 @@
 
         {% endblock %}
     </div>
+
+
+    <!-- footer -->
+<footer class="bg-primary text-lg-start fixed-bottom" data-bs-theme="dark">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-center gap-2 py-3">
+      <img src="{% static 'pngs/spaceapps.jpg' %}" alt="NASA Space Apps" class="footer-logo me-2">
+      <div class="text-center">
+        © 2025 Space Challenge. All Rights Reserved.<br>
+        <p class="text-muted" style="font-size: 0.6em;">
+          This application was created for the <b>NASA Space Apps Challenge</b><br>
+          Inspiring innovation and collaboration beyond Earth.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
 
     <script src="{% static 'js/main.js' %}"></script>
 
