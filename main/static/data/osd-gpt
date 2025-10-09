@@ -1,0 +1,90 @@
+{
+  "OSD-1": {
+    "short_title": "How Microgravity Affects Fruit Fly Immunity",
+    "study_publication_title": "Toll Mediated Infection Response Is Altered by Gravity and Spaceflight in Drosophila",
+    "short_description": "This study examined how spaceflight affects fruit fly immune responses to bacteria and fungi, comparing gene expression in flies raised in microgravity versus normal gravity on Earth.",
+    "summary": "This study explored how spaceflight affects fruit fly immunity. Flies were raised both on Earth and aboard the Space Shuttle Discovery (STS-121), then exposed to bacterial and fungal infections. Using advanced gene analysis, researchers found that microgravity alters immune gene activity, weakening normal responses and triggering unique stress-related genes. These insights help NASA understand how long-term space travel may impact the immune systems of astronauts and other living organisms.",
+    "description": "Space exploration pushes the limits of life, and understanding how living organisms respond to space conditions is essential for keeping astronauts healthy during long missions. In this study, NASA scientists used fruit flies (Drosophila melanogaster) as a model to explore how microgravity affects the immune system. Some flies were raised on Earth under normal gravity, while others were raised in space aboard the Space Shuttle Discovery (STS-121). Both groups were exposed to bacterial (E. coli) and fungal (Beauveria bassiana) infections to compare how their immune systems reacted in different environments. Researchers used microarray technology to measure how thousands of genes changed activity in response to infection. They found that flies raised in space showed altered immune gene expression—their normal defenses were weaker, and some stress-response genes became more active. These results suggest that space conditions can disrupt immune regulation, a finding that helps scientists design better countermeasures to protect astronauts from infections during long-duration missions to the Moon, Mars, and beyond.",
+    "key_findings": [
+      "Fruit flies raised in microgravity show altered immune gene expression.",
+      "Microgravity weakens the normal response to bacterial infections.",
+      "Space-grown flies activate unique stress-related genes not seen on Earth.",
+      "Findings help predict immune challenges astronauts may face in long missions."
+    ],
+    "start_date": "07/04/2006",
+    "end_date": "07/17/2006",
+    "project_link": "https://lsda.jsc.nasa.gov/scripts/experiment/exper.aspx?exp_index=13676",
+    "files": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-1/files/"
+  },
+  "OSD-2": {
+    "short_title": "How Human Cells Respond to Cosmic Radiation",
+    "study_publication_title": "p53-Independent Downregulation of Histone Gene Expression in Human Cell Lines by High- and Low-LET Radiation",
+    "short_description": "This study investigated how exposure to cosmic-like radiation affects human cells, revealing key changes in DNA repair and gene regulation that occur after heavy-ion and gamma-ray exposure.",
+    "summary": "To understand how deep-space radiation impacts human biology, researchers exposed human lymphoblastoid (TK6) cells to two types of ionizing radiation — high-energy iron ions (HZE particles) and gamma rays. Using microarray technology, they compared gene expression between irradiated and control cells. The results revealed that radiation disrupts normal DNA packaging and gene regulation processes, even in cells lacking the p53 tumor-suppressor pathway. These findings provide insight into how human cells might respond to cosmic radiation during long-duration missions beyond Earth’s protective atmosphere.",
+    "description": "Human space exploration exposes cells and tissues to intense forms of radiation that don’t exist on Earth. This study focused on how human lymphoblastoid TK6 cells respond to such conditions, specifically to high-energy heavy ions (HZE particles) and gamma rays. The experiments were conducted using facilities at NASA’s Space Radiation Laboratory (NSRL) and Columbia University. After irradiation, scientists analyzed the activity of thousands of genes using Agilent microarrays. They found that radiation — whether from HZE particles or gamma rays — significantly altered the expression of genes related to DNA repair, chromatin organization, and cell cycle control. Importantly, these changes occurred independently of p53, a major regulator of the DNA damage response. This suggests that cosmic radiation can affect human cells through additional pathways, emphasizing the need for new radioprotective strategies for astronauts on future missions to Mars and beyond.",
+    "key_findings": [
+      "Exposure to both high-energy HZE particles and gamma rays alters gene expression in human cells.",
+      "Radiation downregulates histone-related genes, affecting DNA packaging and repair.",
+      "These changes occur even without p53 activity, indicating alternative response pathways.",
+      "Results help NASA assess radiation risks for human health during spaceflight."
+    ],
+    "start_date": "Unknown",
+    "end_date": "Unknown",
+    "project_link": "http://lsda.jsc.nasa.gov/scripts/experiment/exper.aspx?exp_index=10327",
+    "files": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-2/files/"
+  },
+  "OSD-3": {
+    "short_title": "How Spaceflight Alters Fruit Fly Gene Expression",
+    "study_publication_title": "Innate Immune Responses of Drosophila melanogaster Are Altered by Spaceflight",
+    "short_description": "This NASA study explored how spaceflight changes gene activity in fruit flies, revealing how microgravity and radiation affect immunity and development during flight aboard the Space Shuttle Discovery (STS-121).",
+    "summary": "This experiment examined how living in space changes the way genes are expressed in fruit flies, an important model organism for human biology. Researchers sent flies aboard the Space Shuttle Discovery (STS-121) for nearly 13 days, allowing them to breed and develop in microgravity. Using whole-body gene analysis, the team compared space-grown larvae and adults with Earth-raised controls. The results showed that spaceflight altered genes tied to immune defense, stress, and cellular metabolism. Flies raised in space had weakened innate immune signaling and disrupted macrophage-like cell development, echoing concerns about immune suppression in astronauts. This work deepens NASA’s understanding of biological adaptation to microgravity, guiding strategies to safeguard astronaut health on long-duration missions.",
+    "description": "NASA scientists used fruit flies (Drosophila melanogaster) to study how spaceflight alters gene activity and immune system function. Flies were raised aboard the Space Shuttle Discovery during mission STS-121 (July 4–17, 2006), at an orbital altitude of about 330 km. The flies developed entirely in microgravity, producing a new generation in space. On landing, researchers collected larvae and adults, extracted RNA, and performed genome-wide expression profiling using Affymetrix microarrays. They found significant shifts in genes controlling innate immunity, including those regulating macrophage development, pathogen recognition, and antimicrobial peptide production. Some stress and repair genes were also more active, suggesting that space conditions trigger physiological strain. These findings demonstrate that even short-term exposure to spaceflight can reprogram immune gene networks, providing crucial insight for understanding health risks during extended human missions beyond Earth orbit.",
+    "key_findings": [
+      "Spaceflight alters gene expression in both larval and adult fruit flies.",
+      "Immune-related genes and stress-response pathways show major changes in microgravity.",
+      "Flies raised in space have disrupted immune cell development and reduced antimicrobial activity.",
+      "Results confirm that Drosophila is a strong model for studying human immune adaptation to spaceflight.",
+      "The study provides a genetic foundation for mitigating astronaut immune system challenges."
+    ],
+    "start_date": "07/04/2006",
+    "end_date": "07/17/2006",
+    "project_link": "http://lsda.jsc.nasa.gov/scripts/experiment/exper.aspx?exp_index=1325&string=drosophila&CURRENT_STRING2=drosophila",
+    "files": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-3/files/"
+  },
+  "OSD-4": {
+    "short_title": "Spaceflight Impacts on Mouse Thymus Gene Expression",
+    "study_publication_title": "Microarray analysis of spaceflown murine thymus tissue reveals changes in gene expression regulating stress and glucocorticoid receptors",
+    "short_description": "This study investigated how spaceflight affects gene activity in the thymus of mice, revealing changes in stress response, glucocorticoid regulation, and T cell signaling.",
+    "summary": "NASA researchers examined how the thymus, a key immune organ, responds to spaceflight. Young adult mice (C57BL/6NTac) were flown aboard the Space Shuttle Endeavour (STS-118) for 13 days. Thymus tissue from space-flown mice was compared to ground-based controls using microarrays to analyze gene expression. The study found significant changes in genes regulating stress, glucocorticoid receptors, and T cell activity, helping explain immune system challenges observed during space missions.",
+    "description": "Understanding how spaceflight impacts immune organs is vital for astronaut health. In this experiment, young adult mice were housed in Animal Enclosure Modules (AEMs) both on Earth and aboard the Space Shuttle Endeavour for nearly two weeks. Researchers harvested thymus tissue shortly after landing and used microarrays to profile gene expression. The analysis revealed that spaceflight induced notable changes in genes controlling stress responses, glucocorticoid receptor pathways, and T cell signaling. About 970 gene probes showed significant changes, with 12 genes exhibiting strong up- or down-regulation (≥1.5-fold change). These results demonstrate that microgravity and spaceflight-associated stressors can modify thymus function at the molecular level, contributing to immune system alterations observed in astronauts.",
+    "key_findings": [
+      "Spaceflight changes gene expression in the thymus of young adult mice.",
+      "Genes controlling stress responses and glucocorticoid receptor metabolism are significantly affected.",
+      "T cell signaling pathways show alterations, providing insight into immune system compromise.",
+      "12 genes were consistently up- or down-regulated after spaceflight.",
+      "Findings help explain how microgravity impacts immune system function and can guide countermeasure development for astronauts."
+    ],
+    "start_date": "",
+    "end_date": "",
+    "project_link": "https://taskbook.nasaprs.com/tbp/index.cfm?action=public_query_taskbook_content&TASKID=7191",
+    "files": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-4/files/"
+  },
+  "OSD-5": {
+    "short_title": "Microgravity Effects on Human T-Cell Gene Expression",
+    "study_publication_title": "Gene expression alterations in activated human T-cells induced by modeled microgravity",
+    "short_description": "This study examined how simulated microgravity affects gene activity in human T cells, focusing on apoptosis and immune response genes.",
+    "summary": "NASA researchers investigated how microgravity influences human immune cells. Activated T cells from three donors were cultured under normal gravity (1G) and simulated microgravity (MG) using a rotating wall vessel bioreactor. Gene expression analysis using microarrays revealed that microgravity alters the activity of genes related to apoptosis and other immune functions, providing insight into potential immune system challenges faced during spaceflight.",
+    "description": "Immune cells may behave differently in the microgravity environment of space, which can impact astronaut health. In this study, human peripheral blood T cells were isolated, activated with anti-CD3 and IL-2, and cultured either in normal gravity or in a specialized rotating wall vessel that simulates microgravity. RNA was extracted from the cells and analyzed using Affymetrix GeneChip microarrays. The experiment used cells from three donors with paired samples for normal gravity and simulated microgravity conditions. Microarray analysis identified significant changes in genes associated with apoptosis and immune responses. These findings help scientists understand how weightlessness may influence human immune function and support the development of countermeasures for long-duration space missions.",
+    "key_findings": [
+      "Simulated microgravity alters gene expression in activated human T cells.",
+      "Apoptotic genes are particularly sensitive to microgravity conditions.",
+      "Other immune response genes show significant changes under microgravity.",
+      "Study used cells from three donors with paired 1G and MG samples.",
+      "Findings provide insight into immune system challenges during spaceflight."
+    ],
+    "start_date": "",
+    "end_date": "",
+    "project_link": "",
+    "files": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-5/files/"
+  }
+}
