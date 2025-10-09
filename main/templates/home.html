@@ -1,40 +1,139 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container text-left mt-1">
-  <h2>What do you want to explore today?</h2>
-<form method="get" action="{% url 'home' %}" class="mb-4">
-  <div class="row g-2">
-    <div class="col-md-4">
-      <input type="text" class="form-control" name="q" placeholder="Search title or keywords">
-    </div>
-    <div class="col-md-1">
-      <button class="btn btn-primary w-100" type="submit">Search</button>
-    </div>
+<div class="container mt-4">
+
+  <!-- Header -->
+  <div class="text-center mb-5">
+    <h1 class="fw-bold">What do you want to explore today?</h1>
+    <p class="text-muted">Search across NASA’s Open Science Data Repository for space biology insights.</p>
   </div>
-</form>
 
-  {% if query %}
-    <h3 class="mt-4">Results for "{{ query }}":</h3>
-    <!-- Your results here -->
-  {% endif %}
+  <!-- Search & Smart Filters Form -->
+  <form method="get" action="{% url 'home' %}" class="mb-5">
+    <div class="row g-2 justify-content-center align-items-end">
 
-
-<div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
-  {% for paper in papers %}
-    <div class="col">
-      <div class="card h-100">
-        <div class="card-body text-start">
-          <h5 class="card-title">{{ paper.short_title }}</h5>
-          <p class="card-text" style="text-align: justify;">{{ paper.short_description}}</p>
-          <a href="{% url 'paper' paper.id %}" class="card-link" target="_blank">Read Paper</a>
-        </div>
+      <!-- Search Input -->
+      <div class="col-md-4 col-sm-8">
+        <input
+          type="text"
+          class="form-control form-control-lg shadow-sm"
+          name="q"
+          placeholder="🔍 Search by title, keyword, or mission..."
+          value="{{ request.GET.q }}"
+        >
       </div>
-    </div>
-  {% empty %}
-    <p>No papers available.</p>
-  {% endfor %}
+
+      <!-- Data Source Filter -->
+      <div class="col-md-2 col-sm-4">
+        <select name="data_source" class="form-select form-select-lg shadow-sm">
+          <option value="">All Sources</option>
+          <option value="CGene" {% if request.GET.data_source == "CGene" %}selected{% endif %}>CGene</option>
+          <option value="ALSDA" {% if request.GET.data_source == "ALSDA" %}selected{% endif %}>ALSDA</option>
+          <option value="ESA" {% if request.GET.data_source == "ESA" %}selected{% endif %}>ESA</option>
+        </select>
+      </div>
+
+      <!-- Organism Filter -->
+      <div class="col-md-2 col-sm-4">
+        <select name="organism" class="form-select form-select-lg shadow-sm">
+          <option value="">All Organisms</option>
+          <option value="Human" {% if request.GET.organism == "Human" %}selected{% endif %}>Human</option>
+          <option value="Mouse" {% if request.GET.organism == "Mouse" %}selected{% endif %}>Mouse</option>
+          <option value="Plant" {% if request.GET.organism == "Plant" %}selected{% endif %}>Plant</option>
+          <option value="Microbe" {% if request.GET.organism == "Microbe" %}selected{% endif %}>Microbe</option>
+        </select>
+      </div>
+
+      <!-- Mission / Platform Filter -->
+      <div class="col-md-2 col-sm-4">
+        <select name="mission" class="form-select form-select-lg shadow-sm">
+          <option value="">All Missions</option>
+          <option value="ISS" {% if request.GET.mission == "ISS" %}selected{% endif %}>ISS</option>
+          <option value="Shuttle" {% if request.GET.mission == "Shuttle" %}selected{% endif %}>Space Shuttle</option>
+          <option value="Ground" {% if request.GET.mission == "Ground" %}selected{% endif %}>Ground Control</option>
+          <option value="Simulated" {% if request.GET.mission == "Simulated" %}selected{% endif %}>Simulated Microgravity</option>
+        </select>
+      </div>
+
+      <!-- Experiment Type Filter -->
+      <div class="col-md-2 col-sm-4">
+        <select name="data_type" class="form-select form-select-lg shadow-sm">
+          <option value="">All Experiment Types</option>
+          <option value="Gene Expression" {% if request.GET.data_type == "Gene Expression" %}selected{% endif %}>Gene Expression</option>
+          <option value="Proteomics" {% if request.GET.data_type == "Proteomics" %}selected{% endif %}>Proteomics</option>
+          <option value="Metabolomics" {% if request.GET.data_type == "Metabolomics" %}selected{% endif %}>Metabolomics</option>
+          <option value="Imaging" {% if request.GET.data_type == "Imaging" %}selected{% endif %}>Imaging</option>
+          <option value="Physiology" {% if request.GET.data_type == "Physiology" %}selected{% endif %}>Physiology</option>
+        </select>
+      </div>
+
+      <!-- Start Date Filter -->
+<div class="col-md-2 col-sm-4">
+  <input
+    type="date"
+    class="form-control form-control-lg shadow-sm"
+    name="start_date"
+    placeholder="Start Date"
+    value="{{ request.GET.start_date }}"
+  >
+</div>
+
+<!-- End Date Filter -->
+<div class="col-md-2 col-sm-4">
+  <input
+    type="date"
+    class="form-control form-control-lg shadow-sm"
+    name="end_date"
+    placeholder="End Date"
+    value="{{ request.GET.end_date }}"
+  >
 </div>
 
 
+      <!-- Submit Button -->
+      <div class="col-md-2 col-sm-4 d-grid">
+        <button class="btn btn-primary btn-lg shadow-sm" type="submit">Apply Filters</button>
+      </div>
 
+    </div>
+  </form>
+
+  <!-- Search Results -->
+  {% if query %}
+    <h4 class="text-center text-secondary mb-4">
+      Results for <span class="fw-semibold text-dark">"{{ query }}"</span>:
+    </h4>
+  {% endif %}
+
+  <!-- Papers Grid -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {% for paper in papers %}
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 hover-shadow">
+          <div class="card-body text-start">
+            <h5 class="card-title fw-semibold">{{ paper.short_title }}</h5>
+            <p class="card-text text-secondary" style="text-align: justify;">{{ paper.short_description }}</p>
+          </div>
+          <div class="card-footer bg-transparent border-0">
+            <a href="{% url 'paper' paper.id %}" class="btn btn-outline-primary btn-sm">Read Paper</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="text-center py-5">
+        <p class="text-muted fs-5">No papers found. Try different keywords or adjust filters above.</p>
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+<!-- Hover Shadow Effect -->
+<style>
+  .hover-shadow:hover {
+    transform: translateY(-5px);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+  }
+</style>
 {% endblock %}

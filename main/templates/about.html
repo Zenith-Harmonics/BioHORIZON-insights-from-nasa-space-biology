@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% block title %}About — BioHorizon{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+
+  <!-- Hero -->
+  <section class="mb-5">
+    <div class="p-4 p-md-5 bg-white rounded-3 shadow-sm">
+      <div class="row align-items-center">
+        <div class="col-md-8">
+          <h1 class="display-6 fw-bold mb-3">BioHorizon</h1>
+          <p class="lead mb-3">
+            A lightweight knowledge engine for NASA space-biology research, clean interface,
+            fast keyword search, and AI-generated, user-friendly summaries.
+          </p>
+          <p class="mb-0 text-muted">
+            Built for the <strong>NASA Space Apps Challenge</strong>, created to make scientific
+            discoveries more discoverable and easier to understand.
+          </p>
+        </div>
+
+        <div class="col-md-4 text-md-end mt-4 mt-md-0">
+          <a href="{% url 'home' %}" class="btn btn-primary btn-lg me-2">Explore</a>
+          <a href="https://github.com/Zenith-Harmonics/BioHORIZON-insights-from-nasa-space-biology" target="_blank" class="btn btn-outline-secondary btn-lg">Source</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is this -->
+  <section class="mb-5">
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <h3 class="h4 mb-3">What is BioHorizon?</h3>
+        <p class="mb-3">
+          BioHorizon is a simple web app that pulls space-biology data from open NASA sources,
+          preprocesses it, and uses lightweight AI techniques to produce short, readable summaries.
+          It’s designed for scientists, students and curious minds who want a fast entry point into
+          complex research.
+        </p>
+
+        <ul class="list-unstyled mb-0">
+          <li class="d-flex mb-2">
+            <svg class="me-2" width="20" height="20" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 0a8 8 0 1 0 8 8A8.009 8.009 0 0 0 8 0Zm0 14.5A6.5 6.5 0 1 1 14.5 8 6.508 6.508 0 0 1 8 14.5Z"/>
+              <path d="M10.5 7.25a.75.75 0 0 1 0 1.5H5.5a.75.75 0 0 1 0-1.5h5z"/>
+            </svg>
+            <div>
+              <strong>Simple UI:</strong> Minimal, responsive Bootstrap interface focused on exploration.
+            </div>
+          </li>
+
+          <li class="d-flex mb-2">
+            <svg class="me-2" width="20" height="20" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 1a7 7 0 1 0 7 7A7.008 7.008 0 0 0 8 1Zm3 8H5V7h6z"/>
+            </svg>
+            <div>
+              <strong>Data-first:</strong> Live ingestion from NASA open APIs (or exported datasets).
+            </div>
+          </li>
+
+          <li class="d-flex">
+            <svg class="me-2" width="20" height="20" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 2.5A1.5 1.5 0 0 1 3.5 1h9A1.5 1.5 0 0 1 14 2.5v11A1.5 1.5 0 0 1 12.5 15h-9A1.5 1.5 0 0 1 2 13.5v-11zM3.5 2a.5.5 0 0 0-.5.5V4h10V2.5a.5.5 0 0 0-.5-.5h-9z"/>
+            </svg>
+            <div>
+              <strong>AI summaries:</strong> Concise, human-readable abstracts generated to speed understanding.
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Built for Space Apps</h5>
+            <p class="card-text small text-muted">
+              This project was developed as an entry to the NASA Space Apps Challenge. The goal:
+              prototype a useful tool in a short time that demonstrates impact and clarity.
+            </p>
+
+            <div class="mt-3">
+              <span class="badge bg-primary me-1">Django</span>
+              <span class="badge bg-secondary me-1">Bootstrap</span>
+              <span class="badge bg-secondary me-1">NASA API</span>
+              <span class="badge bg-secondary">NLP Summaries</span>
+            </div>
+
+            <hr>
+
+            <p class="mb-1"><strong>Project status:</strong></p>
+            <p class="small text-success mb-0">Prototype • Open-source • Actively improving</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team & credits -->
+  <section class="mb-5">
+    <div class="row">
+      <div class="col-md-7">
+        <h3 class="h5 mb-3">Team & credits</h3>
+        <p class="mb-2">
+          <strong>BioHorizon</strong> was built by Zenith Harmonics for the NASA Space Apps Challenge.
+          We focused on a minimal interface and proof-of-concept functionality that showcases how open data
+          + lightweight AI can improve scientific discoverability.
+        </p>
+        <p class="mb-0 text-muted small">
+          Data used in this project originates from the
+          <a href="https://osdr.nasa.gov/bio/repo/search?q=&data_source=cgene,alsda,esa&data_type=study" target="_blank">
+            NASA Open Science Data Repository (OSDR)
+          </a>, including datasets from <strong>CGene</strong>, <strong>ALSDA</strong>, and <strong>ESA</strong>.
+          Please credit NASA OSDR and respect all data usage and attribution policies.
+        </p>
+      </div>
+
+      <div class="col-md-5">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Get involved</h6>
+            <p class="card-text small">
+              Contributions, feedback and ideas are welcome. Open-source code and dataset pointers are on the project repo.
+            </p>
+            <a class="btn btn-outline-primary btn-sm" href="https://github.com/Zenith-Harmonics/BioHORIZON-insights-from-nasa-space-biology" target="_blank">View code</a>
+            <a class="btn btn-outline-secondary btn-sm ms-2" href="mailto:mihailc.gosman@gmail.com">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="text-center">
+    <div class="p-4 bg-white rounded-3 shadow-sm">
+      <h4 class="mb-2">Try it out</h4>
+      <p class="mb-3 text-muted">Explore NASA space biology research — simple, fast, and human-friendly.</p>
+      <a href="{% url 'home' %}" class="btn btn-primary btn-lg">Explore Papers</a>
+    </div>
+  </section>
+
+  <div class="mt-4 text-muted small text-center">
+    <p class="mb-0">Built for educational & demonstrative purposes — not an official NASA product.</p>
+  </div>
+
+</div>
+{% endblock %}

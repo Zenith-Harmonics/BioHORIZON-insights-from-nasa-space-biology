@@ -18,3 +18,6 @@ def paper(request, paper_osd):
 
     context = { "paper": paper}
     return render(request, "paper.html", context)
+
+def about(request):
+    return render(request, "about.html")
