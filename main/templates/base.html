@@ -1,79 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load static %}
     <meta charset="UTF-8">
-    <title>BioHorizon</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    >
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BioHORIZON{% endblock %}</title>
+
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb; /* Light background color */
+        }
+        /* Custom scrollbar style */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #9ca3af; /* Gray-400 */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: #f3f4f6; /* Gray-100 */
+        }
+    </style>
 </head>
+<body>
 
-<!-- 👇 Make the body a flex container -->
-<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Brand -->
+                <div class="flex-shrink-0">
+                    <a href="{% url 'home' %}" class="text-2xl font-extrabold text-indigo-700 tracking-tight">
+                        BioHORIZON
+                    </a>
+                </div>
 
-<!-- Header -->
-<header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="{% url 'home' %}">BioHorizon</a>
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="{% url 'home' %}"
+                           class="{% if request.path == '/home/' or request.path == '/' %}bg-indigo-50 text-indigo-700{% else %}text-gray-700 hover:bg-gray-50{% endif %} px-3 py-2 rounded-md text-sm font-medium transition duration-150">
+                            Home
+                        </a>
+                        <a href="{% url 'about' %}"
+                           class="{% if request.path == '/about/' %}bg-indigo-50 text-indigo-700{% else %}text-gray-700 hover:bg-gray-50{% endif %} px-3 py-2 rounded-md text-sm font-medium transition duration-150">
+                            About
+                        </a>
+                        <a href="https://github.com/Zenith-Harmonics/BioHORIZON-insights-from-nasa-space-biology" target="_blank"
+                           class="text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-md text-sm font-medium transition duration-150">
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-      <!-- Toggler for mobile -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <!-- Home link -->
-          <li class="nav-item">
-            <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Home</a>
-          </li>
-
-          <!-- About link -->
-          <li class="nav-item">
-            <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">About</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</header>
-
-
-    <!-- Main content grows to fill space -->
-    <main class="flex-grow-1 container py-4">
+    <!-- Main Content Block -->
+    <main class="min-h-screen">
         {% block content %}
+        <!-- Content from home.html, about.html, or paper.html will go here -->
         {% endblock %}
     </main>
 
-    <!-- Footer stays at the bottom -->
-<footer class="bg-dark text-white mt-auto py-3 border-top border-secondary">
-  <div class="container text-center">
-    <p class="mb-1">
-      &copy; 2025 <strong>BioHorizon</strong> — Built for NASA Space Apps Challenge
-    </p>
-    <p class="mb-0 small text-light">
-      Data sourced from the
-      <a href="https://osdr.nasa.gov/bio/repo/search?q=&data_source=cgene,alsda,esa&data_type=study"
-         target="_blank"
-         class="text-decoration-underline text-light fw-semibold">
-        NASA Open Science Data Repository (OSDR)
-      </a>, including datasets from <strong>CGene</strong>, <strong>ALSDA</strong>, and <strong>ESA</strong>.
-    </p>
-  </div>
-</footer>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-12 py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">
+                &copy; 2025 BioHORIZON Project. Built for the NASA Space Apps Challenge.
+            </p>
+            <p class="text-xs text-gray-400 mt-1">
+                Data provided by NASA Open Science Data Repository (OSDR).
+            </p>
+        </div>
+    </footer>
 
-
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      crossorigin="anonymous"
-    ></script>
 </body>
 </html>

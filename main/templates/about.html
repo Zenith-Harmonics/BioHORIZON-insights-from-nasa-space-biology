@@ -1,131 +1,140 @@
 {% extends "base.html" %}
-{% block title %}About — BioHorizon{% endblock %}
+{% block title %}About — BioHORIZON{% endblock %}
 
 {% block content %}
-<div class="container py-5">
+<div class="container mx-auto px-4 py-12 max-w-6xl">
 
-  <!-- Hero -->
-  <section class="mb-5">
-    <div class="p-4 p-md-5 bg-white rounded-3 shadow-sm">
-      <div class="row align-items-center">
-        <div class="col-md-8">
-          <h1 class="display-6 fw-bold mb-3">BioHorizon</h1>
-          <p class="lead mb-3">
+  <!-- Hero / Introduction -->
+  <section class="mb-12">
+    <div class="p-8 md:p-12 bg-white rounded-xl shadow-2xl border border-gray-100">
+      <div class="flex flex-col md:flex-row items-center justify-between">
+
+        <!-- Text Content -->
+        <div class="md:w-3/5">
+          <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 mb-3">BioHORIZON</h1>
+          <p class="text-xl text-gray-600 mb-4" style="text-align: justify;">
             A lightweight knowledge engine for NASA space-biology research, clean interface,
             fast keyword search, and AI-generated, user-friendly summaries.
           </p>
-          <p class="mb-0 text-muted">
-            Built for the <strong>NASA Space Apps Challenge</strong>, created to make scientific
+          <p class="mb-0 text-sm text-gray-500">
+            Built for the <strong class="text-indigo-600">NASA Space Apps Challenge</strong>, created to make scientific
             discoveries more discoverable and easier to understand.
           </p>
         </div>
 
-        <div class="col-md-4 text-md-end mt-4 mt-md-0">
-          <a href="{% url 'home' %}" class="btn btn-primary btn-lg me-2">Explore</a>
-          <a href="https://github.com/Zenith-Harmonics/BioHORIZON-insights-from-nasa-space-biology" target="_blank" class="btn btn-outline-secondary btn-lg">Source</a>
+        <!-- Actions -->
+        <div class="md:w-2/5 text-center md:text-right mt-6 md:mt-0 space-y-3 md:space-y-0 md:space-x-4">
+          <a href="{% url 'home' %}" class="inline-block w-full md:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg transition duration-150 shadow-md">
+            Explore
+          </a>
+          <a href="https://github.com/Zenith-Harmonics/BioHORIZON-insights-from-nasa-space-biology" target="_blank" class="inline-block w-full md:w-auto border border-gray-400 hover:bg-gray-100 text-gray-700 font-bold py-3 px-8 rounded-lg transition duration-150">
+            Source
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- What is this -->
-  <section class="mb-5">
-    <div class="row g-4">
-      <div class="col-lg-7">
-        <h3 class="h4 mb-3">What is BioHorizon?</h3>
-        <p class="mb-3">
-          BioHorizon is a simple web app that pulls space-biology data from open NASA sources,
+  <!-- What is this & Built For Space Apps -->
+  <section class="mb-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+      <!-- What is BioHorizon -->
+      <div class="lg:col-span-7">
+        <h3 class="text-3xl font-bold mb-4 text-gray-900">What is BioHORIZON?</h3>
+        <p class="mb-5 text-lg text-gray-700">
+          BioHORIZON is a simple web app that pulls space-biology data from open NASA sources,
           preprocesses it, and uses lightweight AI techniques to produce short, readable summaries.
-          It’s designed for scientists, students and curious minds who want a fast entry point into
+          It’s designed for scientists, students, and curious minds who want a fast entry point into
           complex research.
         </p>
 
-        <ul class="list-unstyled mb-0">
-          <li class="d-flex mb-2">
-            <svg class="me-2" width="20" height="20" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 0a8 8 0 1 0 8 8A8.009 8.009 0 0 0 8 0Zm0 14.5A6.5 6.5 0 1 1 14.5 8 6.508 6.508 0 0 1 8 14.5Z"/>
-              <path d="M10.5 7.25a.75.75 0 0 1 0 1.5H5.5a.75.75 0 0 1 0-1.5h5z"/>
-            </svg>
+        <!-- Feature List -->
+        <ul class="space-y-4">
+          <li class="flex items-start text-gray-700">
+            <svg class="flex-shrink-0 w-5 h-5 mr-3 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             <div>
-              <strong>Simple UI:</strong> Minimal, responsive Bootstrap interface focused on exploration.
+              <strong class="text-gray-900">Simple UI:</strong> Minimal, responsive interface focused on exploration.
             </div>
           </li>
 
-          <li class="d-flex mb-2">
-            <svg class="me-2" width="20" height="20" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 1a7 7 0 1 0 7 7A7.008 7.008 0 0 0 8 1Zm3 8H5V7h6z"/>
-            </svg>
+          <li class="flex items-start text-gray-700">
+            <svg class="flex-shrink-0 w-5 h-5 mr-3 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
             <div>
-              <strong>Data-first:</strong> Live ingestion from NASA open APIs (or exported datasets).
+              <strong class="text-gray-900">Data-first:</strong> Live ingestion from NASA open APIs (or exported datasets).
             </div>
           </li>
 
-          <li class="d-flex">
-            <svg class="me-2" width="20" height="20" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 2.5A1.5 1.5 0 0 1 3.5 1h9A1.5 1.5 0 0 1 14 2.5v11A1.5 1.5 0 0 1 12.5 15h-9A1.5 1.5 0 0 1 2 13.5v-11zM3.5 2a.5.5 0 0 0-.5.5V4h10V2.5a.5.5 0 0 0-.5-.5h-9z"/>
-            </svg>
+          <li class="flex items-start text-gray-700">
+            <svg class="flex-shrink-0 w-5 h-5 mr-3 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path></svg>
             <div>
-              <strong>AI summaries:</strong> Concise, human-readable abstracts generated to speed understanding.
+              <strong class="text-gray-900">AI summaries:</strong> Concise, human-readable abstracts generated to speed understanding.
             </div>
           </li>
         </ul>
       </div>
 
-      <div class="col-lg-5">
-        <div class="card h-100 border-0 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title mb-3">Built for Space Apps</h5>
-            <p class="card-text small text-muted">
-              This project was developed as an entry to the NASA Space Apps Challenge. The goal:
-              prototype a useful tool in a short time that demonstrates impact and clarity.
-            </p>
+      <!-- Built for Space Apps Card -->
+      <div class="lg:col-span-5">
+        <div class="h-full bg-gray-50 p-6 rounded-xl shadow-lg border border-gray-200">
+          <h5 class="text-xl font-semibold mb-3 text-gray-800">Built for Space Apps</h5>
+          <p class="text-sm text-gray-600 mb-4">
+            This project was developed as an entry to the NASA Space Apps Challenge. The goal:
+            prototype a useful tool in a short time that demonstrates impact and clarity.
+          </p>
 
-            <div class="mt-3">
-              <span class="badge bg-primary me-1">Django</span>
-              <span class="badge bg-secondary me-1">Bootstrap</span>
-              <span class="badge bg-secondary me-1">NASA API</span>
-              <span class="badge bg-secondary">NLP Summaries</span>
-            </div>
+          <div class="mt-4 space-x-2">
+            <span class="inline-flex items-center px-3 py-1.5 text-xs font-medium bg-indigo-100 text-indigo-800 rounded-full">Django</span>
+            <span class="inline-flex items-center px-3 py-1.5 text-xs font-medium bg-gray-200 text-gray-700 rounded-full">Tailwind CSS</span>
+            <span class="inline-flex items-center px-3 py-1.5 text-xs font-medium bg-gray-200 text-gray-700 rounded-full">NASA Data</span>
+            <span class="inline-flex items-center px-3 py-1.5 text-xs font-medium bg-gray-200 text-gray-700 rounded-full">NLP Summaries</span>
+          </div>
 
-            <hr>
-
-            <p class="mb-1"><strong>Project status:</strong></p>
-            <p class="small text-success mb-0">Prototype • Open-source • Actively improving</p>
+          <div class="mt-6 pt-4 border-t border-gray-200">
+            <p class="mb-1 font-semibold text-gray-800">Project status:</p>
+            <p class="text-sm text-green-600 font-medium">Prototype • Open-source • Actively improving</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Team & credits -->
-  <section class="mb-5">
-    <div class="row">
-      <div class="col-md-7">
-        <h3 class="h5 mb-3">Team & credits</h3>
-        <p class="mb-2">
-          <strong>BioHorizon</strong> was built by Zenith Harmonics for the NASA Space Apps Challenge.
+  <!-- Team & Credits -->
+  <section class="mb-12">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+
+      <!-- Team Description -->
+      <div class="md:col-span-7">
+        <h3 class="text-2xl font-bold mb-3 text-gray-900">Team & Credits</h3>
+        <p class="mb-3 text-gray-700">
+          <strong>BioHORIZON</strong> was built by Zenith Harmonics for the NASA Space Apps Challenge.
           We focused on a minimal interface and proof-of-concept functionality that showcases how open data
           + lightweight AI can improve scientific discoverability.
         </p>
-        <p class="mb-0 text-muted small">
+        <p class="mb-0 text-sm text-gray-500">
           Data used in this project originates from the
-          <a href="https://osdr.nasa.gov/bio/repo/search?q=&data_source=cgene,alsda,esa&data_type=study" target="_blank">
+          <a href="https://osdr.nasa.gov/bio/repo/search?q=&data_source=cgene,alsda,esa&data_type=study" target="_blank" class="text-indigo-600 hover:text-indigo-800 underline">
             NASA Open Science Data Repository (OSDR)
           </a>, including datasets from <strong>CGene</strong>, <strong>ALSDA</strong>, and <strong>ESA</strong>.
           Please credit NASA OSDR and respect all data usage and attribution policies.
         </p>
       </div>
 
-      <div class="col-md-5">
-        <div class="card border-0 shadow-sm">
-          <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted">Get involved</h6>
-            <p class="card-text small">
-              Contributions, feedback and ideas are welcome. Open-source code and dataset pointers are on the project repo.
-            </p>
-            <a class="btn btn-outline-primary btn-sm" href="https://github.com/Zenith-Harmonics/BioHORIZON-insights-from-nasa-space-biology" target="_blank">View code</a>
-            <a class="btn btn-outline-secondary btn-sm ms-2" href="mailto:mihailc.gosman@gmail.com">Contact</a>
-          </div>
+      <!-- Get Involved Card -->
+      <div class="md:col-span-5">
+        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 h-full">
+          <h6 class="text-sm font-semibold text-gray-500 mb-2">Get involved</h6>
+          <p class="text-sm text-gray-600 mb-4">
+            Contributions, feedback and ideas are welcome. Open-source code and dataset pointers are on the project repo.
+          </p>
+          <a class="inline-flex items-center px-4 py-2 text-sm font-medium border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition duration-150"
+             href="https://github.com/Zenith-Harmonics/BioHORIZON-insights-from-nasa-space-biology" target="_blank">
+            View code
+          </a>
+          <a class="inline-flex items-center px-4 py-2 text-sm font-medium border border-gray-400 text-gray-700 rounded-lg hover:bg-gray-100 transition duration-150 ml-2"
+             href="mailto:mihailc.gosman@gmail.com">
+            Contact
+          </a>
         </div>
       </div>
     </div>
@@ -133,14 +142,16 @@
 
   <!-- CTA -->
   <section class="text-center">
-    <div class="p-4 bg-white rounded-3 shadow-sm">
-      <h4 class="mb-2">Try it out</h4>
-      <p class="mb-3 text-muted">Explore NASA space biology research — simple, fast, and human-friendly.</p>
-      <a href="{% url 'home' %}" class="btn btn-primary btn-lg">Explore Papers</a>
+    <div class="p-8 bg-indigo-50 rounded-xl shadow-lg border border-indigo-200">
+      <h4 class="text-2xl font-bold text-gray-900 mb-3">Try it out</h4>
+      <p class="mb-4 text-gray-600">Explore NASA space biology research — simple, fast, and human-friendly.</p>
+      <a href="{% url 'home' %}" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-10 rounded-lg transition duration-150 shadow-md text-lg">
+        Explore Papers
+      </a>
     </div>
   </section>
 
-  <div class="mt-4 text-muted small text-center">
+  <div class="mt-8 text-sm text-gray-500 text-center">
     <p class="mb-0">Built for educational & demonstrative purposes — not an official NASA product.</p>
   </div>
 

@@ -1,91 +1,115 @@
-{% extends "base.html" %}
-{% block title %}{{ paper.short_title }} - BioHorizon{% endblock %}
+{% extends 'base.html' %}
+
+{% block title %}{{ paper.short_title }} - BioHORIZON{% endblock %}
 
 {% block content %}
-<div class="container my-5">
+<div class="container mx-auto px-4 py-12 max-w-5xl">
 
-  <!-- Header -->
-  <div class="text-center mb-5">
-    <h1 class="fw-bold">{{ paper.study_publication_title }}</h1>
-    <p class="text-muted fs-5 mb-1">{{ paper.short_title }}</p>
-    <hr class="w-25 mx-auto opacity-50">
-  </div>
-
-  <!-- Study Overview -->
-  <div class="card shadow-sm border-0 mb-4 hover-shadow">
-    <div class="card-body">
-      <h4 class="text-primary mb-3">Study Overview</h4>
-      <p class="fs-5 mb-2 text-justify">{{ paper.short_description }}</p>
-      <p class="fs-6 text-secondary text-justify">{{ paper.summary }}</p>
-    </div>
-  </div>
-
-  <!-- Detailed Description -->
-  <div class="card shadow-sm border-0 mb-4 hover-shadow">
-    <div class="card-body">
-      <h4 class="text-primary mb-3">Detailed Description</h4>
-      <p class="fs-5 text-justify">{{ paper.description }}</p>
-    </div>
-  </div>
-
-  <!-- Key Findings -->
-  {% if paper.key_findings %}
-  <div class="card shadow-sm border-0 mb-4 hover-shadow">
-    <div class="card-body">
-      <h4 class="text-success mb-3">Key Findings</h4>
-      <ul class="list-group list-group-flush">
-        {% for finding in paper.key_findings %}
-          <li class="list-group-item">{{ finding }}</li>
-        {% endfor %}
-      </ul>
-    </div>
-  </div>
-  {% endif %}
-
-  <!-- Study Timeline -->
-  <div class="card shadow-sm border-0 mb-4 hover-shadow">
-    <div class="card-body">
-      <h4 class="text-warning mb-3">Study Timeline</h4>
-      <p><strong>Start Date:</strong> {{ paper.start_date }}</p>
-      <p><strong>End Date:</strong> {{ paper.end_date }}</p>
-    </div>
-  </div>
-
-  <!-- Resources & External Links -->
-  <div class="card shadow-sm border-0 mb-4 hover-shadow">
-    <div class="card-body">
-      <h4 class="text-info mb-3">Resources & External Data</h4>
-      <div class="list-group">
-        {% if paper.project_link %}
-        <a href="{{ paper.project_link }}" target="_blank" class="list-group-item list-group-item-action">
-          <strong>NASA Project Page</strong><br>
-          <small class="text-muted">Official NASA LSDA entry for this experiment</small>
+    <!-- Header & Back Button -->
+    <div class="mb-8">
+        <a href="{% url 'home' %}" class="text-indigo-600 hover:text-indigo-800 transition duration-150 flex items-center mb-4">
+            <!-- Icon for back arrow -->
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Back to all studies
         </a>
-        {% endif %}
 
-        {% if paper.files %}
-        <a href="{{ paper.files }}" target="_blank" class="list-group-item list-group-item-action">
-          <strong>Data Repository</strong><br>
-          <small class="text-muted">Access raw data files and related materials</small>
-        </a>
-        {% endif %}
-      </div>
+        <div class="text-center">
+            <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 mb-2">
+                {{ paper.study_publication_title }}
+            </h1>
+            <p class="text-lg text-indigo-600 font-medium mb-1">{{ paper.short_title }}</p>
+            <div class="w-1/4 h-0.5 bg-gray-200 mx-auto mt-4"></div>
+        </div>
     </div>
-  </div>
 
-  <!-- Back Link -->
-  <div class="text-center mt-5">
-    <a href="{% url 'home' %}" class="text-decoration-none text-primary fw-semibold">← Back to all studies</a>
-  </div>
+    <!-- Metadata Section (Organism, Mission, Type) -->
+    <div class="flex flex-wrap justify-center gap-4 text-sm font-semibold text-gray-600 mb-10">
+        <span class="px-3 py-1 bg-gray-100 rounded-full shadow-sm">{{ paper.organism_category }}</span>
+        <span class="px-3 py-1 bg-gray-100 rounded-full shadow-sm">{{ paper.mission_category }}</span>
+        <span class="px-3 py-1 bg-gray-100 rounded-full shadow-sm">{{ paper.experiment_type_category }}</span>
+    </div>
 
+    <!-- 1. Study Overview -->
+    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 mb-8">
+        <h3 class="text-2xl font-bold text-indigo-700 mb-4 border-b pb-2">Study Overview</h3>
+        <p class="text-lg mb-4 text-gray-700 font-medium">{{ paper.short_summary }}</p>
+        <p class="text-md text-gray-600 text-justify">{{ paper.summary }}</p>
+    </div>
+
+    <!-- 2. Detailed Description -->
+    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 mb-8">
+        <h3 class="text-2xl font-bold text-indigo-700 mb-4 border-b pb-2">Detailed Description</h3>
+        <p class="text-md text-gray-700 text-justify">{{ paper.description }}</p>
+    </div>
+
+    <!-- 3. Key Findings -->
+    {% if paper.key_findings %}
+    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 mb-8">
+        <h3 class="text-2xl font-bold text-green-700 mb-4 border-b pb-2">Key Findings</h3>
+        <ul class="space-y-3 list-disc list-inside text-gray-700">
+            <!-- Ensure key_findings is treated as a list (handled in data_handler) -->
+            {% for finding in paper.key_findings %}
+              <li class="pl-2">{{ finding }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <!-- 4. Study Timeline & Source -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+
+        <!-- Timeline -->
+        <div class="bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200">
+            <h4 class="text-xl font-bold text-gray-800 mb-3">Timeline</h4>
+            <p class="mb-1 text-gray-700">
+                <span class="font-semibold text-sm text-gray-500 block">Start Date:</span>
+                {{ paper.start_date|default:"N/A" }}
+            </p>
+            <p class="text-gray-700">
+                <span class="font-semibold text-sm text-gray-500 block">End Date:</span>
+                {{ paper.end_date|default:"N/A" }}
+            </p>
+        </div>
+
+        <!-- Source -->
+        <div class="bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200">
+            <h4 class="text-xl font-bold text-gray-800 mb-3">Data Source</h4>
+            <p class="mb-1 text-gray-700">
+                <span class="font-semibold text-sm text-gray-500 block">Original Source:</span>
+                {{ paper.data_source_original|default:"N/A" }}
+            </p>
+            <p class="text-gray-700">
+                <span class="font-semibold text-sm text-gray-500 block">Category:</span>
+                {{ paper.data_source_category|default:"N/A" }}
+            </p>
+        </div>
+    </div>
+
+
+    <!-- 5. Resources & External Links -->
+    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 mb-8">
+        <h3 class="text-2xl font-bold text-blue-700 mb-4 border-b pb-2">External Resources</h3>
+        <div class="space-y-3">
+            {% if paper.project_link %}
+            <a href="{{ paper.project_link }}" target="_blank" class="block p-4 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition duration-150 border border-indigo-200">
+                <strong class="text-indigo-800 flex items-center">
+                    NASA Project Page
+                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </strong>
+                <small class="text-indigo-600">Official LSDA entry for this experiment</small>
+            </a>
+            {% endif %}
+
+            {% if paper.files %}
+            <a href="{{ paper.files }}" target="_blank" class="block p-4 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition duration-150 border border-indigo-200">
+                <strong class="text-indigo-800 flex items-center">
+                    Data Repository Link
+                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                </strong>
+                <small class="text-indigo-600">Access raw data files and related materials</small>
+            </a>
+            {% endif %}
+        </div>
+    </div>
 </div>
-
-<!-- Optional Hover Shadow Effect -->
-<style>
-  .hover-shadow:hover {
-    transform: translateY(-3px);
-    transition: all 0.25s ease-in-out;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
-  }
-</style>
 {% endblock %}

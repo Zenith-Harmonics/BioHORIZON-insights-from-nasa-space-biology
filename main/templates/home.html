@@ -1,139 +1,175 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
+{% block title %}BioHORIZON - Research Discovery{% endblock %}
+
 {% block content %}
-<div class="container mt-4">
+<div class="container mx-auto px-4 py-8">
 
-  <!-- Header -->
-  <div class="text-center mb-5">
-    <h1 class="fw-bold">What do you want to explore today?</h1>
-    <p class="text-muted">Search across NASA’s Open Science Data Repository for space biology insights.</p>
-  </div>
-
-  <!-- Search & Smart Filters Form -->
-  <form method="get" action="{% url 'home' %}" class="mb-5">
-    <div class="row g-2 justify-content-center align-items-end">
-
-      <!-- Search Input -->
-      <div class="col-md-4 col-sm-8">
-        <input
-          type="text"
-          class="form-control form-control-lg shadow-sm"
-          name="q"
-          placeholder="🔍 Search by title, keyword, or mission..."
-          value="{{ request.GET.q }}"
-        >
-      </div>
-
-      <!-- Data Source Filter -->
-      <div class="col-md-2 col-sm-4">
-        <select name="data_source" class="form-select form-select-lg shadow-sm">
-          <option value="">All Sources</option>
-          <option value="CGene" {% if request.GET.data_source == "CGene" %}selected{% endif %}>CGene</option>
-          <option value="ALSDA" {% if request.GET.data_source == "ALSDA" %}selected{% endif %}>ALSDA</option>
-          <option value="ESA" {% if request.GET.data_source == "ESA" %}selected{% endif %}>ESA</option>
-        </select>
-      </div>
-
-      <!-- Organism Filter -->
-      <div class="col-md-2 col-sm-4">
-        <select name="organism" class="form-select form-select-lg shadow-sm">
-          <option value="">All Organisms</option>
-          <option value="Human" {% if request.GET.organism == "Human" %}selected{% endif %}>Human</option>
-          <option value="Mouse" {% if request.GET.organism == "Mouse" %}selected{% endif %}>Mouse</option>
-          <option value="Plant" {% if request.GET.organism == "Plant" %}selected{% endif %}>Plant</option>
-          <option value="Microbe" {% if request.GET.organism == "Microbe" %}selected{% endif %}>Microbe</option>
-        </select>
-      </div>
-
-      <!-- Mission / Platform Filter -->
-      <div class="col-md-2 col-sm-4">
-        <select name="mission" class="form-select form-select-lg shadow-sm">
-          <option value="">All Missions</option>
-          <option value="ISS" {% if request.GET.mission == "ISS" %}selected{% endif %}>ISS</option>
-          <option value="Shuttle" {% if request.GET.mission == "Shuttle" %}selected{% endif %}>Space Shuttle</option>
-          <option value="Ground" {% if request.GET.mission == "Ground" %}selected{% endif %}>Ground Control</option>
-          <option value="Simulated" {% if request.GET.mission == "Simulated" %}selected{% endif %}>Simulated Microgravity</option>
-        </select>
-      </div>
-
-      <!-- Experiment Type Filter -->
-      <div class="col-md-2 col-sm-4">
-        <select name="data_type" class="form-select form-select-lg shadow-sm">
-          <option value="">All Experiment Types</option>
-          <option value="Gene Expression" {% if request.GET.data_type == "Gene Expression" %}selected{% endif %}>Gene Expression</option>
-          <option value="Proteomics" {% if request.GET.data_type == "Proteomics" %}selected{% endif %}>Proteomics</option>
-          <option value="Metabolomics" {% if request.GET.data_type == "Metabolomics" %}selected{% endif %}>Metabolomics</option>
-          <option value="Imaging" {% if request.GET.data_type == "Imaging" %}selected{% endif %}>Imaging</option>
-          <option value="Physiology" {% if request.GET.data_type == "Physiology" %}selected{% endif %}>Physiology</option>
-        </select>
-      </div>
-
-      <!-- Start Date Filter -->
-<div class="col-md-2 col-sm-4">
-  <input
-    type="date"
-    class="form-control form-control-lg shadow-sm"
-    name="start_date"
-    placeholder="Start Date"
-    value="{{ request.GET.start_date }}"
-  >
-</div>
-
-<!-- End Date Filter -->
-<div class="col-md-2 col-sm-4">
-  <input
-    type="date"
-    class="form-control form-control-lg shadow-sm"
-    name="end_date"
-    placeholder="End Date"
-    value="{{ request.GET.end_date }}"
-  >
-</div>
-
-
-      <!-- Submit Button -->
-      <div class="col-md-2 col-sm-4 d-grid">
-        <button class="btn btn-primary btn-lg shadow-sm" type="submit">Apply Filters</button>
-      </div>
-
+    <div class="text-center mb-12">
+        <h2 class="text-5xl font-extrabold tracking-tight text-gray-900">
+            BioHORIZON: Insights from Space Biology
+        </h2>
+        <p class="mt-4 text-xl text-gray-500">
+            Search and filter NASA's Open Science Data Repository (OSDR) experiments.
+        </p>
     </div>
-  </form>
 
-  <!-- Search Results -->
-  {% if query %}
-    <h4 class="text-center text-secondary mb-4">
-      Results for <span class="fw-semibold text-dark">"{{ query }}"</span>:
-    </h4>
-  {% endif %}
+    <!-- Search and Filter Form -->
+    <form method="GET" class="space-y-4 bg-white p-6 rounded-xl shadow-lg border border-gray-100">
 
-  <!-- Papers Grid -->
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-    {% for paper in papers %}
-      <div class="col">
-        <div class="card h-100 shadow-sm border-0 hover-shadow">
-          <div class="card-body text-start">
-            <h5 class="card-title fw-semibold">{{ paper.short_title }}</h5>
-            <p class="card-text text-secondary" style="text-align: justify;">{{ paper.short_description }}</p>
-          </div>
-          <div class="card-footer bg-transparent border-0">
-            <a href="{% url 'paper' paper.id %}" class="btn btn-outline-primary btn-sm">Read Paper</a>
-          </div>
+        <!-- Keyword Search -->
+        <div>
+            <label for="q" class="block text-sm font-medium text-gray-700 mb-2">Keyword Search</label>
+            <input type="text" name="q" id="q" placeholder="e.g., immune response, microgravity, Drosophila"
+                   value="{{ current_keyword }}"
+                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
         </div>
-      </div>
-    {% empty %}
-      <div class="text-center py-5">
-        <p class="text-muted fs-5">No papers found. Try different keywords or adjust filters above.</p>
-      </div>
-    {% endfor %}
-  </div>
+
+        <!-- Filter Dropdowns -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!-- Organism Filter -->
+            <div>
+                <label for="organism" class="block text-sm font-medium text-gray-700 mb-2">Organism</label>
+                <select id="organism" name="organism"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                    <option value="">All Organisms</option>
+                    {% for organism in filter_options.organism_category %}
+                        <option value="{{ organism }}" {% if organism == current_filters.organism_category %}selected{% endif %}>
+                            {{ organism }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Mission Filter -->
+            <div>
+                <label for="mission" class="block text-sm font-medium text-gray-700 mb-2">Mission Type</label>
+                <select id="mission" name="mission"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                    <option value="">All Missions</option>
+                    {% for mission in filter_options.mission_category %}
+                        <option value="{{ mission }}" {% if mission == current_filters.mission_category %}selected{% endif %}>
+                            {{ mission }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Experiment Type Filter -->
+            <div>
+                <label for="type" class="block text-sm font-medium text-gray-700 mb-2">Experiment Type</label>
+                <select id="type" name="type"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                    <option value="">All Types</option>
+                    {% for type in filter_options.experiment_type_category %}
+                        <option value="{{ type }}" {% if type == current_filters.experiment_type_category %}selected{% endif %}>
+                            {{ type }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex items-center justify-end space-x-4 pt-4">
+            <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-lg transition duration-150 shadow-md">
+                Search
+            </button>
+            <a href="{% url 'home' %}" class="text-indigo-600 border border-indigo-600 hover:bg-indigo-50 px-6 py-2 rounded-lg transition duration-150">
+                Clear Filters
+            </a>
+        </div>
+    </form>
+
+    <!-- Results Section -->
+    <div class="mt-12">
+
+        <!-- Determine if any filter or keyword is applied by concatenating all values -->
+        {% with is_filtered=current_keyword|add:current_filters.organism_category|add:current_filters.mission_category|add:current_filters.experiment_type_category %}
+
+            <h3 class="text-2xl font-bold text-gray-900 border-b pb-2 mb-8">
+                {% if is_filtered %}
+                    Search Results ({{ experiments|length }} Matching Papers)
+                {% else %}
+                    Discover Research Highlights (Showing up to 6 of {{ experiments|length }} Total Papers)
+                {% endif %}
+            </h3>
+
+            {% if experiments %}
+
+                <!-- Card Grid -->
+                <div class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+
+                    {% if is_filtered %}
+                        <!-- Use full list if search/filters are active -->
+                        {% for exp in experiments %}
+                            <a href="{% url 'paper' exp.osd_id %}" class="block h-full transition duration-300 transform hover:scale-[1.02] hover:shadow-xl">
+                                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 h-full flex flex-col justify-between">
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-indigo-700 mb-2">{{ exp.short_title }}</h4>
+                                        <p class="text-sm text-gray-600 line-clamp-3">
+                                            {{ exp.short_summary }}
+                                        </p>
+                                    </div>
+                                    <div class="mt-4 text-xs text-gray-400 font-medium">
+                                        <span>{{ exp.organism_category }}</span> &bull; <span>{{ exp.mission_category }}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    {% else %}
+                        <!-- Use sliced list (first 6) for the default view -->
+                        {% for exp in experiments|slice:":6" %}
+                            <a href="{% url 'paper' exp.osd_id %}" class="block h-full transition duration-300 transform hover:scale-[1.02] hover:shadow-xl">
+                                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 h-full flex flex-col justify-between">
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-indigo-700 mb-2">{{ exp.short_title }}</h4>
+                                        <p class="text-sm text-gray-600 line-clamp-3">
+                                            {{ exp.short_summary }}
+                                        </p>
+                                    </div>
+                                    <div class="mt-4 text-xs text-gray-400 font-medium">
+                                        <span>{{ exp.organism_category }}</span> &bull; <span>{{ exp.mission_category }}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+            {% else %}
+                <!-- No Results Message -->
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg shadow-sm">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <!-- Icon Placeholder -->
+                            <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.427 2.78-1.427 3.545 0l3.051 5.694c.594 1.108-.223 2.404-1.57 2.404H6.776c-1.347 0-2.164-1.296-1.57-2.404l3.051-5.694zM10 13a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-sm font-medium text-yellow-800">No matching research found</h3>
+                            <div class="mt-2 text-sm text-yellow-700">
+                                <p>Try broadening your search terms or selecting "All" in the filters above.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            <!-- View More Link (Visible only if NOT filtered and more than 6 results exist) -->
+            {% if not is_filtered and experiments|length > 6 %}
+            <div class="mt-8 text-center">
+                <p class="text-lg text-gray-600">
+                    Found {{ experiments|length }} total papers. Use the **Search** bar above to find specific results.
+                </p>
+            </div>
+            {% endif %}
+
+        {% endwith %}
+    </div>
 
 </div>
-
-<!-- Hover Shadow Effect -->
-<style>
-  .hover-shadow:hover {
-    transform: translateY(-5px);
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
-  }
-</style>
 {% endblock %}
