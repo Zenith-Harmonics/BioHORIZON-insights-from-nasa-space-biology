@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+{% load static %} <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}BioHORIZON{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{% static 'main/zh.png' %}">
 
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -40,7 +41,7 @@
                 </div>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:block">
+                <div>
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="{% url 'home' %}"
                            class="{% if request.path == '/home/' or request.path == '/' %}bg-indigo-50 text-indigo-700{% else %}text-gray-700 hover:bg-gray-50{% endif %} px-3 py-2 rounded-md text-sm font-medium transition duration-150">
