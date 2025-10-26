@@ -1,14 +1,15 @@
-/BioHorizon/.vs/BioHorizon/CopilotIndices
-/BioHorizon
-/biohorizon_backend/.vs
+/src/BioHorizon/.vs/BioHorizon/CopilotIndices
+/src/BioHorizon
+/src/biohorizon_backend/.vs
+/src/BioHorizon
 biohorizon_backend/biohorizon_backend.pyproj
 biohorizon_backend/biohorizon_backend.sln
-/services/.vs
-services/services.sln
-services/services.pyproj
+/src/services/.vs
+/srcservices/services.sln
+/srcservices/services.pyproj
 .venv
 /venv
 /.idea
 
 .vscode
-env.py
+.env
