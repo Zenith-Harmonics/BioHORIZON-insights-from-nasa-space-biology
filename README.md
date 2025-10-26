@@ -14,3 +14,9 @@ uv venv .venv
 source .venv/bin/activate
 uv sync
 ```
+
+To install a new package use:
+```bash
+#!/bin/bash
+uv add <packeage_name>
+```
